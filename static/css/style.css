@@ -250,7 +250,7 @@ html,body
         transform: scale(1,1);
     }
 }
-/* 
+ 
 @media screen and (max-width: 768px) {
     .emoji__container,
     .row-upper,
@@ -375,4 +375,4 @@ html,body
     .timer__bar{
         display: none !important;
     }
-} */
+} 
