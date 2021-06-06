@@ -200,3 +200,12 @@ btnNEUTRAL.addEventListener('click',()=>checkInput('neutral'))
 btnSAD.addEventListener('click',()=>checkInput('sad'))
 btnHAPPY.addEventListener('click',()=>checkInput('happy'))
 btnFEARFUL.addEventListener('click',()=>checkInput('fearful'))
+
+
+// IMAGES WIDTH HANDLERS
+
+const emojis = document.querySelectorAll('img')
+emojis.forEach(img => {
+    img.width = 20
+    img.height = 20
+})
