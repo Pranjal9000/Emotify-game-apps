@@ -30,8 +30,8 @@ const disableInput = () => {
     btnSAD.setAttribute("disabled",true)
     btnFEARFUL.setAttribute("disabled",true)
     btnHAPPY.setAttribute("disabled",true)
-    btnNext.setAttribute("disabled",true)
-    btnEnd.setAttribute("disabled",true)
+    // btnNext.setAttribute("disabled",true)
+    // btnEnd.setAttribute("disabled",true)
 }
 
 const enableInput = () => {
@@ -42,8 +42,8 @@ const enableInput = () => {
     btnSAD.removeAttribute("disabled")
     btnFEARFUL.removeAttribute("disabled")
     btnHAPPY.removeAttribute("disabled")
-    btnNext.removeAttribute("disabled")
-    btnEnd.removeAttribute("disabled")
+    // btnNext.removeAttribute("disabled")
+    // btnEnd.removeAttribute("disabled")
 }
 
 // FUNCTION FOR TIMERS 
