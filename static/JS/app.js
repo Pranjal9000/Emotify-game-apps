@@ -5,6 +5,8 @@ const btnNEUTRAL = document.querySelector('#btnNEUTRAL')
 const btnSAD = document.querySelector('#btnSAD')
 const btnHAPPY = document.querySelector('#btnHAPPY')
 const btnFEARFUL = document.querySelector('#btnFEARFUL')
+const btnNext=document.querySelector('#next')
+const btnEnd=document.querySelector('#end')
 let counter = 0
 localStorage.setItem("userTime", JSON.stringify([]))
 // HELPER FUNCTIONSS
@@ -28,7 +30,10 @@ const disableInput = () => {
     btnSAD.setAttribute("disabled",true)
     btnFEARFUL.setAttribute("disabled",true)
     btnHAPPY.setAttribute("disabled",true)
+    btnNext.setAttribute("disabled",true)
+    btnEnd.setAttribute("disabled",true)
 }
+
 const enableInput = () => {
     btnANGRY.removeAttribute("disabled")
     btnSURPRISED.removeAttribute("disabled")
@@ -37,6 +42,8 @@ const enableInput = () => {
     btnSAD.removeAttribute("disabled")
     btnFEARFUL.removeAttribute("disabled")
     btnHAPPY.removeAttribute("disabled")
+    btnNext.removeAttribute("disabled")
+    btnEnd.removeAttribute("disabled")
 }
 
 // FUNCTION FOR TIMERS 
