@@ -6,8 +6,9 @@ const btnSAD = document.querySelector('#btnSAD')
 const btnHAPPY = document.querySelector('#btnHAPPY')
 const btnFEARFUL = document.querySelector('#btnFEARFUL')
 let counter = 0
-
+localStorage.setItem("userTime", JSON.stringify([]))
 // HELPER FUNCTIONSS
+
 
 const addUserTimeTaken = (usedTime) => {
     let userTime = []
@@ -17,11 +18,7 @@ const addUserTimeTaken = (usedTime) => {
     userTime.push(usedTime)
     localStorage.setItem("userTime", JSON.stringify(userTime))
 }
-const stopTimer = () => {
-    countDown.stop()
-    countViz.stop()
-    disableInput()
-}
+
 
 const disableInput = () => {
     btnANGRY.setAttribute("disabled",true)
@@ -148,25 +145,6 @@ const fetchAttribute = async ()=> {
         method: 'GET'
     }).then(res => res.json())
 }
-const checkInput = async (attrib)=>{
-    stopTimer()
-    const data = await fetchAttribute()
-    if(!data.attrib) {
-        let message = "something went wrong, please restart your game."
-        console.log(message);
-    } else {
-        attrib === data.attrib ? counter+=1 : ''
-    }
-    updateCounter()
-}
-
-btnANGRY.addEventListener('click', async()=>checkInput('angry'))
-btnSURPRISED.addEventListener('click',()=>checkInput('surprised'))
-btnDISGUSTED.addEventListener('click',()=>checkInput('disgusted'))
-btnNEUTRAL.addEventListener('click',()=>checkInput('neutral'))
-btnSAD.addEventListener('click',()=>checkInput('sad'))
-btnHAPPY.addEventListener('click',()=>checkInput('happy'))
-btnFEARFUL.addEventListener('click',()=>checkInput('fearful'))
 
 
 const getRandomImage = async () => {
@@ -178,6 +156,9 @@ const photobox = document.querySelector('#photobox')
 const next = document.querySelector('#next')
 const time = document.querySelector('#time')
 let countDown, countViz
+
+
+
 next.addEventListener('click', async()=>{
     enableInput()
     photobox.textContent = ''
@@ -193,3 +174,29 @@ next.addEventListener('click', async()=>{
     countDown.start()
     countViz.start()
 })
+
+const stopTimer = () => {
+    countDown.stop()
+    countViz.stop()
+    disableInput()
+}
+
+const checkInput = async (attrib)=>{
+    const data = await fetchAttribute()
+    if(!data.attrib) {
+        let message = "something went wrong, please restart your game."
+        console.log(message);
+    } else {
+        attrib === data.attrib ? counter+=1 : ''
+    }
+    stopTimer()
+    updateCounter()
+}
+
+btnANGRY.addEventListener('click', async()=>checkInput('angry'))
+btnSURPRISED.addEventListener('click',()=>checkInput('surprised'))
+btnDISGUSTED.addEventListener('click',()=>checkInput('disgusted'))
+btnNEUTRAL.addEventListener('click',()=>checkInput('neutral'))
+btnSAD.addEventListener('click',()=>checkInput('sad'))
+btnHAPPY.addEventListener('click',()=>checkInput('happy'))
+btnFEARFUL.addEventListener('click',()=>checkInput('fearful'))
