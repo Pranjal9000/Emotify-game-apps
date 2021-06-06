@@ -30,8 +30,8 @@ const disableInput = () => {
     btnSAD.setAttribute("disabled",true)
     btnFEARFUL.setAttribute("disabled",true)
     btnHAPPY.setAttribute("disabled",true)
-    btnNext.setAttribute("disabled",true)
-    btnEnd.setAttribute("disabled",true)
+    // btnNext.setAttribute("disabled",true)
+    // btnEnd.setAttribute("disabled",true)
 }
 
 const enableInput = () => {
@@ -42,8 +42,8 @@ const enableInput = () => {
     btnSAD.removeAttribute("disabled")
     btnFEARFUL.removeAttribute("disabled")
     btnHAPPY.removeAttribute("disabled")
-    btnNext.removeAttribute("disabled")
-    btnEnd.removeAttribute("disabled")
+    // btnNext.removeAttribute("disabled")
+    // btnEnd.removeAttribute("disabled")
 }
 
 // FUNCTION FOR TIMERS 
@@ -207,3 +207,12 @@ btnNEUTRAL.addEventListener('click',()=>checkInput('neutral'))
 btnSAD.addEventListener('click',()=>checkInput('sad'))
 btnHAPPY.addEventListener('click',()=>checkInput('happy'))
 btnFEARFUL.addEventListener('click',()=>checkInput('fearful'))
+
+
+// IMAGES WIDTH HANDLERS
+
+const emojis = document.querySelectorAll('img')
+emojis.forEach(img => {
+    img.width = 20
+    img.height = 20
+})
