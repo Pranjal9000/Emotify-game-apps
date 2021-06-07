@@ -29,10 +29,10 @@
             <div class="howtobox">
                 <h2 class="howto-heading">How to play</h2>
                 <ul class="bullets">
-                    <li class="points">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li class="points">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li class="points">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li class="points">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                    <li class="points">Match the shown image with the correct emotions to score points</li>
+                    <li class="points">You gain 1 point for each correct match</li>
+                    <li class="points">You'll have 5 seconds for each round</li>
+                    <li class="points">You'll be judged on your time and correctness</li>
                 </ul>
             </div>
             <div class="playbox">
@@ -53,7 +53,9 @@
         })
         const startGame = document.querySelector('#startGame')
         startGame.addEventListener('click',()=> {
-            location.href = '/game' 
+            // location.href = '/game'
+            // window.open('/game', "_blank", "width = 1920, height = 1080")
+            window.open('/game')
         })
     </script>
 </body>
