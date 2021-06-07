@@ -216,3 +216,58 @@ emojis.forEach(img => {
     img.width = 20
     img.height = 20
 })
+
+//end buttom
+
+btnEnd.addEventListener('click',()=>{
+    const GameEndElem = document.createElement('div')
+    const textNode = document.createElement('h3')
+    textNode.textContent = "YOUR GAME HAS ENDED."
+    GameEndElem.className = "gameEnded"
+    GameEndElem.appendChild(textNode)
+    
+
+    //Results
+    const result = document.createElement("div")
+    const ul = document.createElement("ul")
+    result.className = "analysis"
+    const heading = document.createElement("h3")
+    heading.textContent = "Your Analysis:"
+    result.appendChild(heading)
+    const showData = (data) => {
+        data.forEach(data => {
+            const li = document.createElement("li")
+            li.textContent = data
+            ul.appendChild(li)
+            // console.log(data)
+        })
+    }
+    result.appendChild(ul)
+    GameEndElem.appendChild(result)
+    const canvas = document.querySelector('#canvas')
+    canvas.innerHTML = ''
+    canvas.appendChild(GameEndElem)
+
+    // removing controllers
+    document.querySelector('.controller').style.display = 'none'
+    // document.querySelector('.user__controller').style.display = 'none'
+
+const data = {
+    array: JSON.parse(localStorage.getItem("userTime")),
+    score: counter
+}
+fetch('/get_data',{
+    method: "POST",
+    headers: {
+        'Content_type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+.then(res => res.json())
+.then(res => {
+    // console.log(res.res)
+    showData(res.res)
+    localStorage.setItem("userTime",'')
+})
+
+})

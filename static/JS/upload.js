@@ -28,8 +28,9 @@ dropArea.addEventListener("drop", (event)=>{
   event.preventDefault(); 
   
   file = event.dataTransfer.files[0];
-  showFile(); 
+  showFile();
 });
+
 function showFile(){
   let fileType = file.type; 
   let validExtensions = ["image/jpeg", "image/jpg", "image/png"]; 
@@ -47,4 +48,27 @@ function showFile(){
     dropArea.classList.remove("active");
     dragText.textContent = "Drag & Drop to Upload File";
   }
+  uploadFile()
+}
+
+function uploadFile() {
+    const selectValue = document.querySelector('#select').value
+    const formData = new FormData()
+    formData.append('pic', file)
+    formData.append('attrib', selectValue)
+    fetch('/upload', {
+        method: "POST",
+        headers: {
+            'Content_Type':'multipart/form-data'
+        },
+        body: formData
+    }).then(res=> res.json())
+    .then(res=>{
+        const message = document.querySelector('#message')
+        message.style.color = '#fff'
+        message.textContent = res.message
+        setTimeout(()=>{
+            location.href = '/'
+        },3000)
+    })
 }

@@ -63,3 +63,19 @@ html,body
     object-fit: cover;
     border-radius: 5px;
   }
+  .dropdown{
+    margin: 20px 0;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5256ad;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .dropdown option{
+    padding: 10px 25px;
+    border-bottom: 1px solid #000;
+  }

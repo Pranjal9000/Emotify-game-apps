@@ -4,6 +4,7 @@ import json
 from db import db_init, db
 from model import Img
 import random
+from algo import algo, algo
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///img.db'
@@ -26,6 +27,7 @@ def uploadFile():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    # print(request.data['file'])
     pic = request.files['pic']
     class_type = (request.form.to_dict()['attrib'])
     if not pic:
@@ -50,7 +52,7 @@ def upload():
 
     return {
         'success': True,
-        'message': 'Hogyi h upload.',
+        'message': 'sucessfully uploaded',
         'resCode': 200
     }
 
@@ -80,5 +82,15 @@ def getAttrib():
     return {
         'attrib': attribute
     }
+
+@app.route('/get_data', methods=["POST","GET"])
+def getAPI():
+    data= json.loads(request.data)
+    res = algo(data)
+    return {
+        "success" : True,
+        "res": res
+    }
+
 if __name__ == "__main__":
     app.run(debug=True)
